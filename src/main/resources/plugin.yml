@@ -1,4 +1,5 @@
 name: MapBackup
-version: 1.0.1
+version: 1.1.0
 main: cn.nekopixel.mapbackup.Main
 api-version: 1.20
+authors: [BLxcwg666]
