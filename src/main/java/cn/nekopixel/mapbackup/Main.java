@@ -9,9 +9,16 @@ public final class Main extends JavaPlugin {
     private MapBackup mapBackup;
 
     @Override
+    public void onLoad() {
+        if (mapBackup != null) {
+            mapBackup.restoreWorlds();
+        }
+    }
+
+    @Override
     public void onEnable() {
         saveDefaultConfig();
-        
+
         List<String> worlds = getConfig().getStringList("worlds");
         if (worlds.isEmpty()) {
             getLogger().warning("配置文件中没有指定要备份的世界");
@@ -25,13 +32,11 @@ public final class Main extends JavaPlugin {
             return;
         }
 
-        getLogger().info("加载完成！");
+        getLogger().info("Enabled！");
     }
 
     @Override
     public void onDisable() {
-        if (mapBackup != null) {
-            mapBackup.restoreWorlds();
-        }
+        getLogger().info("Disabled！");
     }
 }
